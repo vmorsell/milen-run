@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import { Entry } from 'contentful'
-import { IRaceFields } from '../../@types/generated/contentful'
+import { IRace, IRaceFields } from '../../@types/generated/contentful'
 import { getEntries, getEntryBySlug } from '../../lib/api'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -9,13 +8,28 @@ export const getStaticPaths: GetStaticPaths = async () => {
     type: 'race',
   })
 
+  const paths = races.map((r) => {
+    return {
+      params: {
+        slug: r.fields.slug,
+      },
+    }
+  })
+
   return {
-    paths: races?.map((race) => `/races/${race.fields.slug}`) ?? [],
-    fallback: true,
+    paths,
+    fallback: false,
   }
 }
 
-export const getStaticProps: GetStaticProps = async (params: any) => {
+export interface RaceStaticPropsParams {
+  params: {
+    slug: string
+  }
+}
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: RaceStaticPropsParams) => {
   const race = await getEntryBySlug<IRaceFields>({
     type: 'race',
     slug: params.slug,
@@ -29,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (params: any) => {
 }
 
 export interface RaceProps {
-  race: Entry<IRaceFields>
+  race: IRace
 }
 export const Race = ({ race }: RaceProps): JSX.Element => {
   return (

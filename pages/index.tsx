@@ -2,8 +2,7 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { getEntries } from '../lib/api'
-import { Entry } from 'contentful'
-import { IRaceFields } from '../@types/generated/contentful'
+import { IRace, IRaceFields } from '../@types/generated/contentful'
 
 export const getStaticProps: GetStaticProps = async () => {
   const races = await getEntries<IRaceFields>({
@@ -19,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export interface HomeProps {
-  races: Entry<IRaceFields>[]
+  races: IRace[]
 }
 
 export const Home = ({ races }: HomeProps): JSX.Element => {
