@@ -1,18 +1,12 @@
-# NextJS Typescript Boilerplate
+# Milen med Mörsell
 
-Bootstrap a developer-friendly NextJS app configured with:
+NextJS app configured with:
 
 - [Typescript](https://www.typescriptlang.org/)
 - Linting with [ESLint](https://eslint.org/)
 - Formatting with [Prettier](https://prettier.io/)
 - Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
 - Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
 
 ## How to use
 
@@ -46,13 +40,3 @@ yarn dev
 # or
 npm dev
 ```
-
-```bash
-brew install contentful-cli
-# or
-npm install -g contenful-cli
-# or
-yarn global add contentful-cli
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
