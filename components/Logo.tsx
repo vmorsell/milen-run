@@ -1,9 +1,4 @@
-import {
-  keyframes,
-  IconProps,
-  chakra,
-  usePrefersReducedMotion,
-} from '@chakra-ui/core'
+import { keyframes, IconProps, chakra } from '@chakra-ui/core'
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
@@ -11,11 +6,7 @@ const spin = keyframes`
 `
 
 export const Logo = (props: IconProps) => {
-  const prefersReducedMotion = usePrefersReducedMotion()
-
-  const animation = prefersReducedMotion
-    ? undefined
-    : `${spin} infinite 20s linear`
+  const animation = `${spin} infinite 20s linear`
 
   return (
     <chakra.svg

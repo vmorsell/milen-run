@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import Head from 'next/head'
 import { Container, Flex, Heading, HStack } from '@chakra-ui/core'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
+import { Logo } from './Logo'
 import { NextChakraLink } from './NextChakraLink'
 
 type Props = {
@@ -28,6 +29,7 @@ export const Layout = ({ children, title = 'Milen med Mörsell' }: Props) => (
                   alignItems="center"
                   justifyContent="center"
                 >
+                  <Logo h="1.5rem" pointerEvents="none" mr={4} />
                   <Heading size="lg">Milen med Mörsell</Heading>
                 </NextChakraLink>
               </HStack>
