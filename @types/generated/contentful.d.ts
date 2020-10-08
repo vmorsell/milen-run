@@ -398,6 +398,9 @@ export interface IRaceFields {
 
   /** Location */
   location?: { lat: number; lon: number } | undefined
+
+  /** Image */
+  image: Asset
 }
 
 export interface IRace extends Entry<IRaceFields> {

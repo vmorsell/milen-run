@@ -1,8 +1,9 @@
 import { GetStaticProps } from 'next'
 import { getEntries } from '../lib/api'
 import { IRace, IRaceFields } from '../@types/generated/contentful'
-import { Heading, Text, Box } from '@chakra-ui/core'
-import { NextChakraLink } from '../components/NextChakraLink'
+import { Heading, Text } from '@chakra-ui/core'
+import { Layout } from '../components/Layout'
+import { RaceTile } from '../components/RaceTile'
 
 export const getStaticProps: GetStaticProps = async () => {
   const races = await getEntries<IRaceFields>({
@@ -22,17 +23,23 @@ export interface HomeProps {
 }
 
 export const Home = ({ races }: HomeProps): JSX.Element => (
-  <>
+  <Layout>
     {races.map((race) => (
-      <Box key={race.sys.id} rounded="lg">
-        <Heading as="h2">{race.fields.title}</Heading>
-        <Text>{race.fields.description}</Text>
-        <NextChakraLink href={`/races/${race.fields.slug}`}>
-          Go to
-        </NextChakraLink>
-      </Box>
+      <RaceTile key={race.sys.id} race={race} />
     ))}
-  </>
+    <Heading as="h2" size="md" mt="8">
+      Who dis?
+    </Heading>
+    <Text my={4}>
+      Milen med Mörsell is a friendly 10 km run on Kungsholmen for students in
+      iSpexet at KTH and other cool cats who can't get enough running by
+      themselves.
+    </Text>
+    <Text my={4}>
+      We run together in a slow pace. Everyone is welcome, no previous
+      experience of long distance running necessary.
+    </Text>
+  </Layout>
 )
 
 export default Home
