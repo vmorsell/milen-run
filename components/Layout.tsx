@@ -50,7 +50,7 @@ export const Layout = ({ children, title, imageUrl }: Props) => {
             style={{ filter: 'blur(8px)' }}
           ></Box>
         )}
-        <Container maxWidth="600px">
+        <Container>
           <header>
             <Flex
               py={4}
@@ -83,7 +83,7 @@ export const Layout = ({ children, title, imageUrl }: Props) => {
           </header>
         </Container>
       </Box>
-      <Container maxWidth="600px" my={8}>
+      <Container my={8}>
         {children}
         <Divider my={8} />
         <footer>
