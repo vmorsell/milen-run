@@ -2,7 +2,7 @@ import type { NextComponentType, NextPageContext } from 'next'
 import type { NextRouter } from 'next/router'
 //import { Chakra } from '../components/Chakra'
 import { ChakraProvider } from '@chakra-ui/core'
-import theme from '@chakra-ui/theme'
+import theme from '../theme'
 
 export interface AppRenderProps {
   pageProps: object
