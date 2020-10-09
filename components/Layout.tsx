@@ -41,11 +41,13 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
         {imageUrl && (
           <Box
             position="absolute"
-            top="-16"
-            left="-16"
-            right="-16px"
-            bottom="-16px"
-            flex="1"
+            top={-10}
+            left={-10}
+            right={-10}
+            bottom={-10}
+            display="flex"
+            alignItems="stretch"
+            justifyContent="stretch"
             zIndex={-10}
             style={{ filter: 'blur(8px)' }}
           >
@@ -53,8 +55,7 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
               layout
               layoutId={`image-${pageId}`}
               style={{
-                width: '100%',
-                height: '100%',
+                flex: 1,
                 backgroundImage: `linear-gradient(${imageOverlay},${imageOverlay}), url(${imageUrl})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',

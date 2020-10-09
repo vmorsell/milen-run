@@ -22,9 +22,9 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
     >
       <motion.div layout layoutId={`image-${race.sys.id}`}>
         <Box
-          py="4"
-          px="8"
-          my="4"
+          py={4}
+          px={8}
+          my={4}
           position="relative"
           rounded="lg"
           overflow="hidden"
@@ -33,15 +33,15 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
         >
           <Box
             position="absolute"
-            top="-16px"
-            left="-16px"
-            right="-16px"
-            bottom="-16px"
+            top={-10}
+            left={-10}
+            right={-10}
+            bottom={-10}
             background={`linear-gradient(${imageOverlay},${imageOverlay}), url(${race.fields.image.fields.file.url})`}
             backgroundSize="cover"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
-            zIndex="-10"
+            zIndex={-10}
             style={{ filter: 'blur(8px)' }}
           ></Box>
           <motion.div layout layoutId={`heading-${race.sys.id}`}>
@@ -70,7 +70,7 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             </Text>
           </motion.div>
         </Box>
-      </motion.div>
+        </motion.div>
     </NextChakraLink>
   )
 }
