@@ -9,10 +9,12 @@ import {
   HStack,
   Divider,
   Link,
+  Icon,
   useColorModeValue,
+  Circle,
 } from '@chakra-ui/core'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
-import { Logo } from './Logo'
+import { FaRunning } from 'react-icons/fa'
 import { NextChakraLink } from './NextChakraLink'
 
 type Props = {
@@ -67,7 +69,9 @@ export const Layout = ({ children, title, imageUrl }: Props) => {
                       alignItems="center"
                       justifyContent="center"
                     >
-                      <Logo h="1.5rem" pointerEvents="none" mr={4} />
+                      <Circle bgColor="#fd4e5d" p="0.4em" mr={4}>
+                        <Icon as={FaRunning} boxSize={5} color="#fff" />
+                      </Circle>
                       <Heading size="lg">Milen med Mörsell</Heading>
                     </NextChakraLink>
                   </HStack>
