@@ -80,9 +80,14 @@ export const Layout = ({ children, title, imageUrl }: Props) => {
               <ColorModeSwitcher justifySelf="flex-end" />
             </Flex>
             {title && (
-              <Heading size="xl" pt={120} pb={10}>
-                {title}
-              </Heading>
+              <Box pt={120} pb={10}>
+                <Text size="xl" textTransform="uppercase" fontWeight="bolder">
+                  Milen med Mörsell:
+                </Text>
+                <Heading size="xl" fontWeight="bolder">
+                  {title}
+                </Heading>
+              </Box>
             )}
           </header>
         </Container>

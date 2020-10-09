@@ -2,8 +2,8 @@ import { extendTheme } from '@chakra-ui/core'
 
 export default extendTheme({
   fontSizes: {
-    xs: '16px',
-    sm: '18px',
+    xs: '13px',
+    sm: '16px',
     md: '20px',
     lg: '22px',
     xl: '24px',
@@ -16,7 +16,24 @@ export default extendTheme({
   components: {
     Text: {
       baseStyle: {
-        fontSize: '20px',
+        fontSize: 'md',
+      },
+      sizes: {
+        xs: {
+          fontSize: 'xs',
+        },
+        sm: {
+          fontSize: 'sm',
+        },
+        md: {
+          fontSize: 'md',
+        },
+        lg: {
+          fontSize: 'lg',
+        },
+        xl: {
+          fontSize: 'xl',
+        },
       },
     },
   },
