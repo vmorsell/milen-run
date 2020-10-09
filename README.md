@@ -1,12 +1,12 @@
-# Milen med Mörsell
+# Milen
 
-NextJS app configured with:
+[Next.js](https://nextjs.org) app for the Milen med Mörsell run (formerly Milen med Musikmäster).
 
-- [Typescript](https://www.typescriptlang.org/)
-- Linting with [ESLint](https://eslint.org/)
-- Formatting with [Prettier](https://prettier.io/)
+- UI with [Chakra UI](https://chakra-ui.com) and animations with [Framer Motion](https://www.framer.com/motion/)
+- Linting with [ESLint](https://eslint.org/) and formatting with [Prettier](https://prettier.io/)
 - Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
 - Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+- Deployment on [Azure Static Web App](https://azure.microsoft.com/en-us/services/app-service/static/) using [GitHub Actions](https://github.com/features/actions)
 
 ## How to use
 
