@@ -139,7 +139,7 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
           <Text textAlign="center" my={4}>
             Improve this site on{' '}
             <Link
-              href="https://github.com/vmorsell/milen-med-morsell"
+              href="https://github.com/vmorsell/milen-run"
               isExternal
             >
               GitHub
