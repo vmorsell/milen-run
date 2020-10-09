@@ -25,8 +25,8 @@ export interface HomeProps {
 export const Home = ({ races }: HomeProps): JSX.Element => {
   return (
     <Layout>
-      {races.map((race) => (
-        <RaceTile key={race.sys.id} race={race} />
+      {races.map((race, index) => (
+        <RaceTile key={race.sys.id} listIndex={index} race={race} />
       ))}
       <Heading as="h2" size="md" mt="8">
         Who dis?

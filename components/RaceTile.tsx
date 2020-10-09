@@ -6,9 +6,10 @@ import { motion } from 'framer-motion'
 
 export interface RaceTileProps {
   race: IRace
+  listIndex: number
 }
 
-export const RaceTile = ({ race }: RaceTileProps) => {
+export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
   const imageOverlay = useColorModeValue(
     'rgba(255, 255, 255, 0.2)',
     'rgba(0 , 0, 0, 0.4)'
@@ -48,9 +49,26 @@ export const RaceTile = ({ race }: RaceTileProps) => {
               {race.fields.title}
             </Heading>
           </motion.div>
-          <Text>
-            {rfcToReadable(race.fields.date)} ({rfcTimeTo(race.fields.date)})
-          </Text>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                opacity: 0,
+              },
+              visible: {
+                opacity: 1,
+                transition: {
+                  delay: 0.3 + listIndex * 0.1,
+                  duration: 0.2,
+                },
+              },
+            }}
+          >
+            <Text>
+              {rfcToReadable(race.fields.date)} ({rfcTimeTo(race.fields.date)})
+            </Text>
+          </motion.div>
         </Box>
       </motion.div>
     </NextChakraLink>
