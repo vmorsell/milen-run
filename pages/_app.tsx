@@ -1,8 +1,8 @@
 import type { NextComponentType, NextPageContext } from 'next'
 import type { NextRouter } from 'next/router'
-//import { Chakra } from '../components/Chakra'
 import { ChakraProvider } from '@chakra-ui/core'
 import theme from '../theme'
+import { AnimateSharedLayout } from 'framer-motion'
 
 export interface AppRenderProps {
   pageProps: object
@@ -14,7 +14,9 @@ export interface AppRenderProps {
 export default function App({ Component, pageProps }: AppRenderProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <AnimateSharedLayout type="crossfade">
+        <Component {...pageProps} />
+      </AnimateSharedLayout>
     </ChakraProvider>
   )
 }

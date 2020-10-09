@@ -31,6 +31,7 @@
     "@chakra-ui/icons": "^1.0.0-next.6",
     "@chakra-ui/theme-tools": "^1.0.0-next.6",
     "contentful": "^7.14.6",
+    "framer-motion": "^2.8.0",
     "next": "latest",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

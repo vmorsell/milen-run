@@ -54,6 +54,7 @@ export const Race = ({ race }: RaceProps): JSX.Element => {
     <Layout
       title={race.fields.title}
       imageUrl={race.fields.image.fields.file.url}
+      pageId={race.sys.id}
     >
       <Head>
         <title>{race.fields.title}</title>
