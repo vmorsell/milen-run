@@ -19,7 +19,7 @@ export const RaceTile = ({ race }: RaceTileProps) => {
       href={`/races/${race.fields.slug}`}
       style={{ textDecoration: 'none' }}
     >
-      <motion.div layoutId={`image-${race.sys.id}`}>
+      <motion.div layout layoutId={`image-${race.sys.id}`}>
         <Box
           py="4"
           px="8"
@@ -43,7 +43,7 @@ export const RaceTile = ({ race }: RaceTileProps) => {
             zIndex="-10"
             style={{ filter: 'blur(8px)' }}
           ></Box>
-          <motion.div layoutId={`heading-${race.sys.id}`}>
+          <motion.div layout layoutId={`heading-${race.sys.id}`}>
             <Heading as="h2" size="md">
               {race.fields.title}
             </Heading>

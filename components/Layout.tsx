@@ -50,6 +50,7 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
             style={{ filter: 'blur(8px)' }}
           >
             <motion.div
+              layout
               layoutId={`image-${pageId}`}
               style={{
                 width: '100%',
@@ -117,7 +118,7 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
                     Milen med Mörsell:
                   </Text>
                 </motion.div>
-                <motion.div layoutId={`heading-${pageId ?? ''}`}>
+                <motion.div layout layoutId={`heading-${pageId ?? ''}`}>
                   <Heading size="xl" fontWeight="bolder">
                     {title}
                   </Heading>
