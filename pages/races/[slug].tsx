@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { Heading, Text } from '@chakra-ui/core'
-import { AspectRatio, Box, Flex } from '@chakra-ui/layout'
+import { AspectRatio, Box, HStack } from '@chakra-ui/layout'
 import { IRace, IRaceFields } from '../../@types/generated/contentful'
 import { getEntries, getEntryBySlug } from '../../lib/api'
 import { Layout } from '../../components/Layout'
@@ -59,7 +59,7 @@ export const Race = ({ race }: RaceProps): JSX.Element => {
         <title>{race.fields.title}</title>
       </Head>
       <main>
-        <Flex my={6}>
+        <HStack my={6} alignItems="flex-start">
           <Box flex="1">
             <Text fontSize="sm">When?</Text>
             <Text fontSize="xl" fontWeight="bold">
@@ -78,7 +78,7 @@ export const Race = ({ race }: RaceProps): JSX.Element => {
               ~{race.fields.duration} mins
             </Text>
           </Box>
-        </Flex>
+        </HStack>
         {race.fields.description.split('\n\n').map((p, i) => (
           <Text key={i} my={4}>
             {p}
