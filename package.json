@@ -1,6 +1,6 @@
 {
-  "name": "milen-med-morsell",
-  "author": "Viktor Mörsell",
+  "name": "milen-run",
+  "author": "Viktor Mörsell <viktor.morsell@protonmail.ch>",
   "license": "MIT",
   "version": "0.0.1",
   "scripts": {
