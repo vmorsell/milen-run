@@ -66,7 +66,7 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             }}
           >
             <Text>
-              {rfcToReadable(race.fields.date)} ({rfcTimeTo(race.fields.date)})
+              {rfcToReadable(race.fields.date)} (in {rfcTimeTo(race.fields.date)})
             </Text>
           </motion.div>
         </Box>

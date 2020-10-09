@@ -8,7 +8,7 @@ import { RaceTile } from '../components/RaceTile'
 export const getStaticProps: GetStaticProps = async () => {
   const races = await getEntries<IRaceFields>({
     type: 'race',
-    order: '-fields.date',
+    order: 'fields.date',
   })
 
   return {
