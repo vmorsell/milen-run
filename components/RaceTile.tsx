@@ -38,6 +38,7 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             right={-10}
             bottom={-10}
             background={`linear-gradient(${imageOverlay},${imageOverlay}), url(${race.fields.image.fields.file.url})`}
+            backgroundColor='rgb(160, 174, 192)'
             backgroundSize="cover"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"

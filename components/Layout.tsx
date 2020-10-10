@@ -57,6 +57,7 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
               style={{
                 flex: 1,
                 backgroundImage: `linear-gradient(${imageOverlay},${imageOverlay}), url(${imageUrl})`,
+                backgroundColor: 'rgb(249, 245, 249)',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
