@@ -1,6 +1,6 @@
 import { Box, Heading, Text, useColorModeValue } from '@chakra-ui/core'
 import { NextChakraLink } from '../components/NextChakraLink'
-import { rfcToReadable, rfcTimeTo } from '../utils/date'
+import { formatDate, timeTo } from '../utils/date'
 import { IRace } from '../@types/generated/contentful'
 import { motion } from 'framer-motion'
 
@@ -67,8 +67,8 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             }}
           >
             <Text>
-              {rfcToReadable(race.fields.date)} (in{' '}
-              {rfcTimeTo(race.fields.date)})
+              {formatDate({ dateTime: race.fields.date })} (in{' '}
+              {timeTo({ dateTime: race.fields.date })})
             </Text>
           </motion.div>
         </Box>

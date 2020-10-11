@@ -1,13 +1,42 @@
-export const rfcToReadable = (rfc: string): string => {
-  const date = new Date()
-  date.setTime(Date.parse(rfc))
-  return date.toDateString()
+const parseDateTime = (dateTime: string): Date => {
+  const [year, month, date, hours, minutes] = dateTime
+    .split(/\D/)
+    .map((v) => parseInt(v))
+  return new Date(year, month - 1, date, hours, minutes)
 }
 
-export const rfcTimeTo = (rfc: string): string => {
-  const date = Date.parse(rfc)
+export interface FormatDateProps {
+  dateTime: string
+  locale?: string
+  options?: object
+}
+
+export const formatDate = ({
+  dateTime,
+  locale = 'en-GB',
+  options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    timeZone: 'Europe/Stockholm',
+  },
+}: FormatDateProps): string => {
+  const d = parseDateTime(dateTime)
+  return Intl.DateTimeFormat(locale, options).format(d)
+}
+
+export interface TimeToProps {
+  dateTime: string
+}
+
+export const timeTo = ({ dateTime }: TimeToProps): string => {
+  const d = parseDateTime(dateTime)
+
   const now = Date.now()
-  const diff = date - now
+  const diff = d.getTime() - now
 
   const ago = diff > 0 ? '' : ' ago'
 
