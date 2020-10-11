@@ -66,6 +66,8 @@ export interface RaceProps {
 export const Race = ({ race, layout }: RaceProps): JSX.Element => {
   return (
     <Layout
+      backButtonLogotype
+      backButtonHref="/"
       layout={layout}
       title={race.fields.title}
       superTitle={race.fields.superTitle}
