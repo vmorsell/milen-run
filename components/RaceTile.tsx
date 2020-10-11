@@ -38,7 +38,7 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             right={-10}
             bottom={-10}
             background={`linear-gradient(${imageOverlay},${imageOverlay}), url(${race.fields.image.fields.file.url})`}
-            backgroundColor='rgb(160, 174, 192)'
+            backgroundColor="rgb(160, 174, 192)"
             backgroundSize="cover"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
@@ -67,11 +67,12 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             }}
           >
             <Text>
-              {rfcToReadable(race.fields.date)} (in {rfcTimeTo(race.fields.date)})
+              {rfcToReadable(race.fields.date)} (in{' '}
+              {rfcTimeTo(race.fields.date)})
             </Text>
           </motion.div>
         </Box>
-        </motion.div>
+      </motion.div>
     </NextChakraLink>
   )
 }

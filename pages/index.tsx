@@ -1,7 +1,14 @@
 import { GetStaticProps } from 'next'
 import { getEntries } from '../lib/api'
-import { IRace, IRaceFields } from '../@types/generated/contentful'
-import { Heading, Text } from '@chakra-ui/core'
+import {
+  IRace,
+  IRaceFields,
+  ILayout,
+  ILayoutFields,
+} from '../@types/generated/contentful'
+import { Heading } from '@chakra-ui/core'
+import Markdown from 'react-markdown'
+import renderers from '../utils/md_renderers'
 import { Layout } from '../components/Layout'
 import { RaceTile } from '../components/RaceTile'
 
@@ -11,35 +18,37 @@ export const getStaticProps: GetStaticProps = async () => {
     order: 'fields.date',
   })
 
+  const layout = await getEntries<ILayoutFields>({
+    type: 'layout',
+    limit: 1,
+  }).then((items) => items[0])
+
   return {
     props: {
       races,
+      layout,
     },
   }
 }
 
 export interface HomeProps {
   races: IRace[]
+  layout: ILayout
 }
 
-export const Home = ({ races }: HomeProps): JSX.Element => {
+export const Home = ({ races, layout }: HomeProps): JSX.Element => {
   return (
-    <Layout>
+    <Layout layout={layout}>
+      <Heading as="h2" size="md" mt="8">
+        {layout.fields.upcomingRunsHeading}
+      </Heading>
       {races.map((race, index) => (
         <RaceTile key={race.sys.id} listIndex={index} race={race} />
       ))}
       <Heading as="h2" size="md" mt="8">
-        Who dis?
+        {layout.fields.descriptionHeading}
       </Heading>
-      <Text my={4}>
-        Milen med Mörsell is a friendly 10 km run on Kungsholmen for students in
-        iSpexet at KTH and other cool cats who can't get enough running by
-        themselves.
-      </Text>
-      <Text my={4}>
-        We run together in a slow pace. Everyone is welcome, no previous
-        experience of long distance running necessary.
-      </Text>
+      <Markdown source={layout.fields.description} renderers={renderers} />
     </Layout>
   )
 }
