@@ -98,27 +98,26 @@ export const Layout = ({
                       justifyContent="center"
                     >
                       <motion.div layout layoutId="logotype">
-                        {backButtonLogotype && (
-                          <IconButton
-                            variant="ghost"
-                            aria-label="Back"
-                            mr={2}
-                            icon={
+                        <IconButton
+                          isRound
+                          mr={2}
+                          colorScheme="red"
+                          aria-label={
+                            backButtonLogotype ? 'Back' : layout.fields.title
+                          }
+                          icon={
+                            backButtonLogotype ? (
                               <Icon
                                 as={FaChevronLeft}
                                 boxSize={5}
-                                color="#fd4e5d"
+                                color="#fff"
                               />
-                            }
-                          />
-                        )}
-                        {!backButtonLogotype && (
-                          <Circle bgColor="#fd4e5d" p="0.4em" mr={4}>
-                            <Icon as={FaRunning} boxSize={5} color="#fff" />
-                          </Circle>
-                        )}
+                            ) : (
+                              <Icon as={FaRunning} boxSize={5} color="#fff" />
+                            )
+                          }
+                        />
                       </motion.div>
-
                       <Heading size="lg">{layout.fields.title}</Heading>
                     </NextChakraLink>
                   </HStack>
