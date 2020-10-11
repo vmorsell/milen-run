@@ -12,7 +12,7 @@ import {
 } from '../../@types/generated/contentful'
 import { getEntries, getEntryBySlug } from '../../lib/api'
 import { Layout } from '../../components/Layout'
-import { rfcToReadable } from '../../utils/date'
+import { formatDate } from '../../utils/date'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const races = await getEntries<IRaceFields>({
@@ -80,7 +80,7 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
           <Box flex="1">
             <Text fontSize="sm">{layout.fields.whenHeading}</Text>
             <Text fontSize="xl" fontWeight="bold">
-              {rfcToReadable(race.fields.date)}
+              {formatDate({ dateTime: race.fields.date })}
             </Text>
           </Box>
           <Box flex="1">
@@ -101,7 +101,9 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
         <Heading as="h2" size="md" my={8}>
           {layout.fields.directionsHeading}
         </Heading>
-        {race.fields.directions && <Markdown source={race.fields.directions} renderers={renderers} />}
+        {race.fields.directions && (
+          <Markdown source={race.fields.directions} renderers={renderers} />
+        )}
         <AspectRatio ratio={19 / 9} maxH="30vh">
           <iframe
             src={`https://www.openstreetmap.org/export/embed.html?bbox=${
