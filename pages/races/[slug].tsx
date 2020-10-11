@@ -99,8 +99,9 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
         <Markdown source={race.fields.description} renderers={renderers} />
         <Markdown source={layout.fields.description} renderers={renderers} />
         <Heading as="h2" size="md" my={8}>
-          {layout.fields.getThereHeading}
+          {layout.fields.directionsHeading}
         </Heading>
+        {race.fields.directions && <Markdown source={race.fields.directions} renderers={renderers} />}
         <AspectRatio ratio={19 / 9} maxH="30vh">
           <iframe
             src={`https://www.openstreetmap.org/export/embed.html?bbox=${
