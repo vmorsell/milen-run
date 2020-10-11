@@ -29,7 +29,7 @@ type Props = {
   imageUrl?: string
   pageId?: string
   layout: ILayout
-  backButtonLogotype: boolean
+  backButtonLogotype?: boolean
 }
 
 export const Layout = ({
