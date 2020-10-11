@@ -89,11 +89,7 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
             </Text>
           </Box>
         </HStack>
-        {race.fields.description.split('\n\n').map((p, i) => (
-          <Text key={i} my={4}>
-            {p}
-          </Text>
-        ))}
+        <Markdown source={race.fields.description} renderers={renderers} />
         <Markdown source={layout.fields.description} renderers={renderers} />
         <Heading as="h2" size="md" my={8}>
           How do I get there?
