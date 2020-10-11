@@ -1,6 +1,11 @@
 import { GetStaticProps } from 'next'
 import { getEntries } from '../lib/api'
-import { IRace, IRaceFields, ILayout, ILayoutFields } from '../@types/generated/contentful'
+import {
+  IRace,
+  IRaceFields,
+  ILayout,
+  ILayoutFields,
+} from '../@types/generated/contentful'
 import { Heading } from '@chakra-ui/core'
 import Markdown from 'react-markdown'
 import renderers from '../utils/md_renderers'
@@ -16,12 +21,12 @@ export const getStaticProps: GetStaticProps = async () => {
   const layout = await getEntries<ILayoutFields>({
     type: 'layout',
     limit: 1,
-  }).then(items => items[0])
+  }).then((items) => items[0])
 
   return {
     props: {
       races,
-      layout
+      layout,
     },
   }
 }
@@ -33,17 +38,17 @@ export interface HomeProps {
 
 export const Home = ({ races, layout }: HomeProps): JSX.Element => {
   return (
-    <Layout>
+    <Layout layout={layout}>
       <Heading as="h2" size="md" mt="8">
-        Upcoming Runs
+        {layout.fields.upcomingRunsHeading}
       </Heading>
       {races.map((race, index) => (
         <RaceTile key={race.sys.id} listIndex={index} race={race} />
       ))}
       <Heading as="h2" size="md" mt="8">
-        Who dis?
+        {layout.fields.descriptionHeading}
       </Heading>
-      <Markdown source={layout.fields.description} renderers={renderers}/>
+      <Markdown source={layout.fields.description} renderers={renderers} />
     </Layout>
   )
 }

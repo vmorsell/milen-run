@@ -1,5 +1,6 @@
-import {Text } from '@chakra-ui/core'
+import { Text, Link } from '@chakra-ui/core'
 
 export default {
-  paragraph: (props) => <Text my={4}>{props.children}</Text>
+  paragraph: (props) => <Text my={4}>{props.children}</Text>,
+  link: Link,
 }

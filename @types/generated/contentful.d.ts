@@ -7,8 +7,38 @@ export interface ILayoutFields {
   /** Title */
   title: string
 
+  /** Description Heading */
+  descriptionHeading: string
+
   /** Description */
   description: string
+
+  /** Upcoming Runs Heading */
+  upcomingRunsHeading: string
+
+  /** Previous Runs Heading */
+  previousRunsHeading: string
+
+  /** When Heading */
+  whenHeading: string
+
+  /** Where Heading */
+  whereHeading: string
+
+  /** Duration Heading */
+  durationHeading: string
+
+  /** Get There Heading */
+  getThereHeading: string
+
+  /** Attend Heading */
+  attendHeading: string
+
+  /** Attend Text */
+  attendText: string
+
+  /** Footer */
+  footer: string
 }
 
 export interface ILayout extends Entry<ILayoutFields> {
@@ -29,6 +59,9 @@ export interface ILayout extends Entry<ILayoutFields> {
 }
 
 export interface IRaceFields {
+  /** Super Title */
+  superTitle?: string | undefined
+
   /** Title */
   title: string
 
@@ -46,6 +79,9 @@ export interface IRaceFields {
 
   /** Location */
   location?: { lat: number; lon: number } | undefined
+
+  /** Location Name */
+  locationName: string
 
   /** Image */
   image: Asset

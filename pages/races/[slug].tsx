@@ -4,7 +4,12 @@ import { Heading, Text } from '@chakra-ui/core'
 import { AspectRatio, Box, HStack } from '@chakra-ui/layout'
 import Markdown from 'react-markdown'
 import renderers from '../../utils/md_renderers'
-import { IRace, IRaceFields, ILayout, ILayoutFields } from '../../@types/generated/contentful'
+import {
+  IRace,
+  IRaceFields,
+  ILayout,
+  ILayoutFields,
+} from '../../@types/generated/contentful'
 import { getEntries, getEntryBySlug } from '../../lib/api'
 import { Layout } from '../../components/Layout'
 import { rfcToReadable } from '../../utils/date'
@@ -43,13 +48,13 @@ export const getStaticProps: GetStaticProps = async ({
 
   const layout = await getEntries<ILayoutFields>({
     type: 'layout',
-    limit: 1
-  }).then(items=>items[0])
+    limit: 1,
+  }).then((items) => items[0])
 
   return {
     props: {
       race,
-      layout
+      layout,
     },
   }
 }
@@ -61,7 +66,9 @@ export interface RaceProps {
 export const Race = ({ race, layout }: RaceProps): JSX.Element => {
   return (
     <Layout
+      layout={layout}
       title={race.fields.title}
+      superTitle={race.fields.superTitle}
       imageUrl={race.fields.image.fields.file.url}
       pageId={race.sys.id}
     >
@@ -71,19 +78,19 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
       <main>
         <HStack my={6} alignItems="flex-start">
           <Box flex="1">
-            <Text fontSize="sm">When?</Text>
+            <Text fontSize="sm">{layout.fields.whenHeading}</Text>
             <Text fontSize="xl" fontWeight="bold">
               {rfcToReadable(race.fields.date)}
             </Text>
           </Box>
           <Box flex="1">
-            <Text fontSize="sm">Where?</Text>
+            <Text fontSize="sm">{layout.fields.whereHeading}</Text>
             <Text fontSize="xl" fontWeight="bold">
-              Kungsholmen
+              {race.fields.locationName}
             </Text>
           </Box>
           <Box flex="1">
-            <Text fontSize="sm">For how long?</Text>
+            <Text fontSize="sm">{layout.fields.durationHeading}</Text>
             <Text fontSize="xl" fontWeight="bold">
               ~{race.fields.duration} mins
             </Text>
@@ -92,7 +99,7 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
         <Markdown source={race.fields.description} renderers={renderers} />
         <Markdown source={layout.fields.description} renderers={renderers} />
         <Heading as="h2" size="md" my={8}>
-          How do I get there?
+          {layout.fields.getThereHeading}
         </Heading>
         <AspectRatio ratio={19 / 9} maxH="30vh">
           <iframe
@@ -104,9 +111,9 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
           ></iframe>
         </AspectRatio>
         <Heading as="h2" size="md" my={8}>
-          You son of a bitch, I'm in!
+          {layout.fields.attendHeading}
         </Heading>
-        <Text>Cool! Attend the event on Spexbook or send me a text.</Text>
+        <Markdown source={layout.fields.attendText} renderers={renderers} />
       </main>
     </Layout>
   )

@@ -8,24 +8,36 @@ import {
   Text,
   HStack,
   Divider,
-  Link,
   Icon,
   useColorModeValue,
   Circle,
+  Center,
 } from '@chakra-ui/core'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
 import { FaRunning } from 'react-icons/fa'
 import { NextChakraLink } from './NextChakraLink'
 import { motion } from 'framer-motion'
+import Markdown from 'react-markdown'
+import renderers from '../utils/md_renderers'
+import { ILayout } from '../@types/generated/contentful'
 
 type Props = {
   children?: ReactNode
   title?: string
+  superTitle?: string
   imageUrl?: string
   pageId?: string
+  layout: ILayout
 }
 
-export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
+export const Layout = ({
+  children,
+  title,
+  superTitle,
+  imageUrl,
+  pageId,
+  layout,
+}: Props) => {
   const imageOverlay = useColorModeValue(
     'rgba(255, 255, 255, 0.2)',
     'rgba(0 , 0, 0, 0.4)'
@@ -86,7 +98,7 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
                         <Icon as={FaRunning} boxSize={5} color="#fff" />
                       </Circle>
 
-                      <Heading size="lg">Milen med Mörsell</Heading>
+                      <Heading size="lg">{layout.fields.title}</Heading>
                     </NextChakraLink>
                   </HStack>
                 </nav>
@@ -111,14 +123,16 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
                     },
                   }}
                 >
-                  <Text
-                    as="span"
-                    size="xl"
-                    textTransform="uppercase"
-                    fontWeight="bolder"
-                  >
-                    Milen med Mörsell:
-                  </Text>
+                  {superTitle && (
+                    <Text
+                      as="span"
+                      size="xl"
+                      textTransform="uppercase"
+                      fontWeight="bolder"
+                    >
+                      {superTitle}
+                    </Text>
+                  )}
                 </motion.div>
                 <motion.div layout layoutId={`heading-${pageId ?? ''}`}>
                   <Heading size="xl" fontWeight="bolder">
@@ -134,18 +148,9 @@ export const Layout = ({ children, title, imageUrl, pageId }: Props) => {
         {children}
         <Divider my={8} />
         <footer>
-          <Text textAlign="center" my={4}>
-            Running is fun 2020
-          </Text>
-          <Text textAlign="center" my={4}>
-            Improve this site on{' '}
-            <Link
-              href="https://github.com/vmorsell/milen-run"
-              isExternal
-            >
-              GitHub
-            </Link>
-          </Text>
+          <Center>
+            <Markdown source={layout.fields.footer} renderers={renderers} />
+          </Center>
         </footer>
       </Container>
     </div>
