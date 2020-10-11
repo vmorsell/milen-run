@@ -28,8 +28,8 @@ export interface ILayoutFields {
   /** Duration Heading */
   durationHeading: string
 
-  /** Get There Heading */
-  getThereHeading: string
+  /** Directions Heading */
+  directionsHeading: string
 
   /** Attend Heading */
   attendHeading: string
@@ -76,6 +76,9 @@ export interface IRaceFields {
 
   /** Duration */
   duration: number
+
+  /** Directions */
+  directions?: string | undefined
 
   /** Location */
   location?: { lat: number; lon: number } | undefined
