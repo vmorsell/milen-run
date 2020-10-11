@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import { getEntries } from '../lib/api'
 import { IRace, IRaceFields, ILayout, ILayoutFields } from '../@types/generated/contentful'
+import { Heading } from '@chakra-ui/core'
 import Markdown from 'react-markdown'
 import renderers from '../utils/md_renderers'
 import { Layout } from '../components/Layout'
@@ -33,6 +34,9 @@ export interface HomeProps {
 export const Home = ({ races, layout }: HomeProps): JSX.Element => {
   return (
     <Layout>
+      <Heading as="h2" size="md" mt="8">
+        Upcoming Runs
+      </Heading>
       {races.map((race, index) => (
         <RaceTile key={race.sys.id} listIndex={index} race={race} />
       ))}
