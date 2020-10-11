@@ -2,7 +2,9 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { Heading, Text } from '@chakra-ui/core'
 import { AspectRatio, Box, HStack } from '@chakra-ui/layout'
-import { IRace, IRaceFields } from '../../@types/generated/contentful'
+import Markdown from 'react-markdown'
+import renderers from '../../utils/md_renderers'
+import { IRace, IRaceFields, ILayout, ILayoutFields } from '../../@types/generated/contentful'
 import { getEntries, getEntryBySlug } from '../../lib/api'
 import { Layout } from '../../components/Layout'
 import { rfcToReadable } from '../../utils/date'
@@ -39,17 +41,24 @@ export const getStaticProps: GetStaticProps = async ({
     slug: params.slug,
   })
 
+  const layout = await getEntries<ILayoutFields>({
+    type: 'layout',
+    limit: 1
+  }).then(items=>items[0])
+
   return {
     props: {
       race,
+      layout
     },
   }
 }
 
 export interface RaceProps {
   race: IRace
+  layout: ILayout
 }
-export const Race = ({ race }: RaceProps): JSX.Element => {
+export const Race = ({ race, layout }: RaceProps): JSX.Element => {
   return (
     <Layout
       title={race.fields.title}
@@ -85,6 +94,7 @@ export const Race = ({ race }: RaceProps): JSX.Element => {
             {p}
           </Text>
         ))}
+        <Markdown source={layout.fields.description} renderers={renderers} />
         <Heading as="h2" size="md" my={8}>
           How do I get there?
         </Heading>
