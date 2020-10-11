@@ -108,7 +108,9 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
               race.fields.location.lon - 0.01
             }%2C${race.fields.location.lat - 0.01}%2C${
               race.fields.location.lon + 0.01
-            }%2C${race.fields.location.lat + 0.01}&layer=hot`}
+            }%2C${race.fields.location.lat + 0.01}&layer=hot&marker=${
+              race.fields.location.lat
+            }%2C${race.fields.location.lon}`}
           ></iframe>
         </AspectRatio>
         <Heading as="h2" size="md" my={8}>
