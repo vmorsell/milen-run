@@ -41,7 +41,7 @@ export const Layout = ({
   backButtonLogotype = false,
 }: Props) => {
   const imageOverlayColor = useColorModeValue('#000', '#000')
-  const imageOverlayOpacity = useColorModeValue(0.1, 0.4)
+  const imageOverlayOpacity = useColorModeValue(0, 0.4)
   return (
     <div>
       <Head>
