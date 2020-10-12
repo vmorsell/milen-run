@@ -40,10 +40,8 @@ export const Layout = ({
   layout,
   backButtonLogotype = false,
 }: Props) => {
-  const imageOverlay = useColorModeValue(
-    'rgba(255, 255, 255, 0.2)',
-    'rgba(0 , 0, 0, 0.4)'
-  )
+  const imageOverlayColor = useColorModeValue('#000', '#000')
+  const imageOverlayOpacity = useColorModeValue(0.1, 0.4)
   return (
     <div>
       <Head>
@@ -89,6 +87,14 @@ export const Layout = ({
                   y="0"
                   preserveAspectRatio="xMidYMid slice"
                 ></image>
+                <rect
+                  width="100%"
+                  height="100%"
+                  x="0"
+                  y="0"
+                  fill={imageOverlayColor}
+                  opacity={imageOverlayOpacity}
+                ></rect>
               </svg>
             </motion.div>
           </Box>
