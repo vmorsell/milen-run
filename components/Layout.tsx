@@ -10,7 +10,6 @@ import {
   Divider,
   Icon,
   useColorModeValue,
-  Circle,
   Center,
   IconButton,
 } from '@chakra-ui/core'
@@ -41,10 +40,8 @@ export const Layout = ({
   layout,
   backButtonLogotype = false,
 }: Props) => {
-  const imageOverlay = useColorModeValue(
-    'rgba(255, 255, 255, 0.2)',
-    'rgba(0 , 0, 0, 0.4)'
-  )
+  const imageOverlayColor = useColorModeValue('#000', '#000')
+  const imageOverlayOpacity = useColorModeValue(0, 0.4)
   return (
     <div>
       <Head>
@@ -52,32 +49,54 @@ export const Layout = ({
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Box position="relative" overflow="hidden">
+      <Box position="relative">
         {imageUrl && (
           <Box
             position="absolute"
-            top={-10}
-            left={-10}
-            right={-10}
-            bottom={-10}
+            top={0}
+            left={0}
+            right={0}
+            bottom={0}
+            zIndex={-1}
             display="flex"
-            alignItems="stretch"
             justifyContent="stretch"
-            zIndex={-10}
-            style={{ filter: 'blur(8px)' }}
+            alignItems="stretch"
           >
             <motion.div
               layout
               layoutId={`image-${pageId}`}
-              style={{
-                flex: 1,
-                backgroundImage: `linear-gradient(${imageOverlay},${imageOverlay}), url(${imageUrl})`,
-                backgroundColor: 'rgb(249, 245, 249)',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            ></motion.div>
+              style={{ flex: '1 1 0', display: 'flex' }}
+            >
+              <svg id="svg" style={{ flex: '1 1 0' }}>
+                <filter id="svgFilter" width="100%" height="100%" x="0" y="0">
+                  <feGaussianBlur
+                    id="svgGaussianBlur"
+                    in="SourceGraphic"
+                    stdDeviation="10"
+                  ></feGaussianBlur>
+                  <feComponentTransfer>
+                    <feFuncA type="discrete" tableValues="1 1" />
+                  </feComponentTransfer>
+                </filter>
+                <image
+                  xlinkHref={imageUrl}
+                  filter="url(#svgFilter)"
+                  width="100%"
+                  height="100%"
+                  x="0"
+                  y="0"
+                  preserveAspectRatio="xMidYMid slice"
+                ></image>
+                <rect
+                  width="100%"
+                  height="100%"
+                  x="0"
+                  y="0"
+                  fill={imageOverlayColor}
+                  opacity={imageOverlayOpacity}
+                ></rect>
+              </svg>
+            </motion.div>
           </Box>
         )}
         <Container>
