@@ -41,6 +41,12 @@ export const timeTo = ({ dateTime }: TimeToProps): string => {
   const ago = diff > 0 ? '' : ' ago'
 
   const weeks = diff / (1000 * 60 * 60 * 24 * 7)
+  if (weeks > 4.3) {
+    const rounded = Math.round(weeks/4.3)
+    const unit = rounded > 1 ? 'months' : 'month'
+    return `${rounded} ${unit}${ago}`
+  }
+
   if (Math.abs(weeks) > 0) {
     const rounded = Math.round(weeks)
     const unit = weeks > 1 ? 'weeks' : 'week'
