@@ -12,9 +12,10 @@ import {
   useColorModeValue,
   Circle,
   Center,
+  IconButton,
 } from '@chakra-ui/core'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
-import { FaRunning } from 'react-icons/fa'
+import { FaRunning, FaChevronLeft } from 'react-icons/fa'
 import { NextChakraLink } from './NextChakraLink'
 import { motion } from 'framer-motion'
 import Markdown from 'react-markdown'
@@ -28,6 +29,7 @@ type Props = {
   imageUrl?: string
   pageId?: string
   layout: ILayout
+  backButtonLogotype?: boolean
 }
 
 export const Layout = ({
@@ -37,6 +39,7 @@ export const Layout = ({
   imageUrl,
   pageId,
   layout,
+  backButtonLogotype = false,
 }: Props) => {
   const imageOverlay = useColorModeValue(
     'rgba(255, 255, 255, 0.2)',
@@ -94,10 +97,21 @@ export const Layout = ({
                       alignItems="center"
                       justifyContent="center"
                     >
-                      <Circle bgColor="#fd4e5d" p="0.4em" mr={4}>
-                        <Icon as={FaRunning} boxSize={5} color="#fff" />
-                      </Circle>
-
+                      <IconButton
+                        isRound
+                        mr={2}
+                        colorScheme="red"
+                        aria-label={
+                          backButtonLogotype ? 'Back' : layout.fields.title
+                        }
+                        icon={
+                          backButtonLogotype ? (
+                            <Icon as={FaChevronLeft} boxSize={5} color="#fff" />
+                          ) : (
+                            <Icon as={FaRunning} boxSize={5} color="#fff" />
+                          )
+                        }
+                      />
                       <Heading size="lg">{layout.fields.title}</Heading>
                     </NextChakraLink>
                   </HStack>
