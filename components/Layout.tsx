@@ -10,7 +10,6 @@ import {
   Divider,
   Icon,
   useColorModeValue,
-  Circle,
   Center,
   IconButton,
 } from '@chakra-ui/core'
