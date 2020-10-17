@@ -98,6 +98,9 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
           </Box>
         </HStack>
         <Markdown source={race.fields.description} renderers={renderers} />
+        <Heading as="h2" size="md" my={8}>
+          {layout.fields.descriptionHeading}
+        </Heading>
         <Markdown source={layout.fields.description} renderers={renderers} />
         <Heading as="h2" size="md" my={8}>
           {layout.fields.directionsHeading}
