@@ -11,7 +11,7 @@ export interface RaceTileProps {
 
 export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
   const imageOverlay = useColorModeValue(
-    'rgba(255, 255, 255, 0.2)',
+    'rgba(255, 255, 255, 0.4)',
     'rgba(0 , 0, 0, 0.4)'
   )
   return (
