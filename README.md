@@ -16,9 +16,9 @@
 git clone https://github.com/vmorsell/milen-med-morsell
 ```
 
-### Step 2: Create an account and a space on Contentful
+### Step 2: Create a free Contentful account
 
-Go to [contentful.com](https://contentful.com)
+Go to [contentful.com](https://contentful.com) and follow the instructions.
 
 ### Step 3: Environment variables
 
