@@ -25,6 +25,10 @@ Go to [contentful.com](https://contentful.com)
 Rename `.env.local.example` to `.env.local` and replace the placeholders
 with your Contentful API keys.
 
+You can find your space ID on Contentful by navigating to `Settings > Space settings > General settings`
+
+API keys generator can be found by navigating to `Settings > Space settings > API keys`
+
 ### Step 3: Install Contenful CLI
 
 ```bash
