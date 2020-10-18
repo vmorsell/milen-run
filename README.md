@@ -25,18 +25,50 @@ Go to [contentful.com](https://contentful.com)
 Rename `.env.local.example` to `.env.local` and replace the placeholders
 with your Contentful API keys.
 
-### Step 3: Generate Contentful types
+### Step 3: Install Contenful CLI
 
 ```bash
-yarn gen-types
+yarn global add contentful-cli
 # or
-npm gen-types
+npm install -g contentful-cli
+# or
+brew install contentful-cli
 ```
 
-### Step 4: Start development server
+### Step 4: Import example data
+
+Log in to Contentful
+
+```bash
+contentful login
+```
+
+Select your Contentful space
+
+```bash
+contentful space use
+```
+
+Import example data
+
+```bash
+contentful space import --content-file example/contentful_data.json
+```
+
+### Step 5: Start development server
 
 ```bash
 yarn dev
 # or
 npm dev
+```
+
+## Type generation
+
+This updates the local types to reflect your Contentful models. Run this every time you've changed something at Contentful.
+
+```bash
+yarn gen-types
+# or
+npm gen-types
 ```
