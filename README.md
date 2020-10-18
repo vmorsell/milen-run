@@ -10,17 +10,42 @@
 
 ## How to use
 
-### Step 1: Clone package
+### Software prerequisites
+
+You need the following software to run this application
+
+- [Node.js](https://nodejs.org/en/download/)
+- Optional: [Yarn package manager](https://classic.yarnpkg.com/en/docs/install)
+
+### Step 1: Clone repository
+
+Open a terminal window and run the following
 
 ```bash
-git clone https://github.com/vmorsell/milen-med-morsell
+git clone https://github.com/vmorsell/milen-run
 ```
 
-### Step 2: Create a free Contentful account
+Open the cloned directory
+
+```bash
+cd milen-run
+```
+
+### Step 2: Install dependencies
+
+Install dependencies
+
+```bash
+yarn
+# or
+npm install
+```
+
+### Step 3: Create a free Contentful account
 
 Go to [contentful.com](https://contentful.com) and follow the instructions.
 
-### Step 3: Environment variables
+### Step 4: Environment variables
 
 Rename `.env.local.example` to `.env.local` and replace the placeholders
 with your Contentful API keys.
@@ -29,7 +54,7 @@ You can find your space ID on Contentful by navigating to `Settings > Space sett
 
 API keys generator can be found by navigating to `Settings > Space settings > API keys`
 
-### Step 3: Install Contenful CLI
+### Step 5: Install Contenful CLI
 
 ```bash
 yarn global add contentful-cli
@@ -39,7 +64,7 @@ npm install -g contentful-cli
 brew install contentful-cli
 ```
 
-### Step 4: Import example data
+### Step 6: Import example data
 
 Log in to Contentful
 
@@ -59,7 +84,7 @@ Import example data
 contentful space import --content-file example/contentful_data.json
 ```
 
-### Step 5: Start development server
+### Step 7: Start development server
 
 ```bash
 yarn dev
