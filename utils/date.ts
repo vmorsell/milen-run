@@ -38,29 +38,29 @@ export const timeTo = ({ dateTime }: TimeToProps): string => {
   const now = Date.now()
   const diff = d.getTime() - now
 
-  const ago = diff > 0 ? '' : ' ago'
+  const ending = diff > 0 ? '' : ' ago'
 
   const weeks = diff / (1000 * 60 * 60 * 24 * 7)
   if (weeks > 4.3) {
     const rounded = Math.round(weeks / 4.3)
     const unit = rounded > 1 ? 'months' : 'month'
-    return `${rounded} ${unit}${ago}`
+    return `${rounded} ${unit}${ending}`
   }
 
-  if (Math.abs(weeks) > 0) {
+  if (Math.abs(weeks) > 1) {
     const rounded = Math.round(weeks)
     const unit = rounded > 1 ? 'weeks' : 'week'
-    return `${rounded} ${unit}${ago}`
+    return `${rounded} ${unit}${ending}`
   }
 
   const days = weeks * 7
-  if (Math.abs(days) > 0) {
+  if (Math.abs(days) > 1) {
     const rounded = Math.round(days)
     const unit = rounded > 1 ? 'days' : 'day'
-    return `${rounded} ${unit}${ago}`
+    return `${rounded} ${unit}${ending}`
   }
 
   const hours = Math.ceil(days * 24)
   const unit = hours > 1 ? 'hours' : 'hour'
-  return `${hours} ${unit}${ago}`
+  return `${hours} ${unit}${ending}`
 }
