@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Box, Heading, Text, useColorModeValue } from '@chakra-ui/core'
 import { NextChakraLink } from '../components/NextChakraLink'
 import { formatDate, timeTo } from '../utils/date'
@@ -10,10 +11,14 @@ export interface RaceTileProps {
 }
 
 export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
+  const [timeLeft, setTimeLeft] = useState('')
   const imageOverlay = useColorModeValue(
     'rgba(255, 255, 255, 0.4)',
     'rgba(0 , 0, 0, 0.4)'
   )
+  useEffect(() => {
+    setTimeLeft(timeTo({ dateTime: race.fields.date }))
+  }, [])
   return (
     <NextChakraLink
       key={race.sys.id}
@@ -67,8 +72,7 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             }}
           >
             <Text>
-              {formatDate({ dateTime: race.fields.date })} (in{' '}
-              {timeTo({ dateTime: race.fields.date })})
+              {formatDate({ dateTime: race.fields.date })} (in {timeLeft})
             </Text>
           </motion.div>
         </Box>
