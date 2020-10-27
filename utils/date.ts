@@ -47,14 +47,14 @@ export const timeTo = ({ dateTime }: TimeToProps): string => {
     return `${rounded} ${unit}${ago}`
   }
 
-  if (Math.abs(weeks) > 0) {
+  if (Math.abs(weeks) > 1) {
     const rounded = Math.round(weeks)
     const unit = rounded > 1 ? 'weeks' : 'week'
     return `${rounded} ${unit}${ago}`
   }
 
   const days = weeks * 7
-  if (Math.abs(days) > 0) {
+  if (Math.abs(days) > 1) {
     const rounded = Math.round(days)
     const unit = rounded > 1 ? 'days' : 'day'
     return `${rounded} ${unit}${ago}`
