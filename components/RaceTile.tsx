@@ -23,7 +23,7 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
     <NextChakraLink
       key={race.sys.id}
       href={`/races/${race.fields.slug}`}
-      style={{ textDecoration: 'none' }}
+      variant="race-tile"
     >
       <motion.div layout layoutId={`image-${race.sys.id}`}>
         <Box

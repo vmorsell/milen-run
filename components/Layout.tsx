@@ -115,6 +115,7 @@ export const Layout = ({
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
+                      variant="header"
                     >
                       <IconButton
                         isRound
