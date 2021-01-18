@@ -36,5 +36,24 @@ export default extendTheme({
         },
       },
     },
+    Link: {
+      baseStyle: {
+        color: '#0366d6',
+        _hover: {
+          textDecoration: 'underline',
+        }
+      },
+      variants: {
+        'header': {
+          color: 'inherit',
+        },
+        'race-tile': {
+          color: 'inherit',
+          _hover: {
+            textDecoration: 'none',
+          }
+        }
+      }
+    }
   },
 })
