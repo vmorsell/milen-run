@@ -15,6 +15,7 @@ import { RaceTile } from '../components/RaceTile'
 export const getStaticProps: GetStaticProps = async () => {
   const races = await getEntries<IRaceFields>({
     type: 'race',
+    'fields.date[gte]': new Date().toISOString(),
     order: 'fields.date',
   })
 
