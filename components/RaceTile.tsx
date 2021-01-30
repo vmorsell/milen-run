@@ -72,7 +72,11 @@ export const RaceTile = ({ race, listIndex }: RaceTileProps) => {
             }}
           >
             <Text>
-              {formatDate({ dateTime: race.fields.date })} (in {timeLeft})
+              {formatDate({
+                dateTime: race.fields.date,
+                options: { weekday: 'short' },
+              })}{' '}
+              (in {timeLeft})
             </Text>
           </motion.div>
         </Box>

@@ -14,18 +14,18 @@ export interface FormatDateProps {
 export const formatDate = ({
   dateTime,
   locale = 'en-GB',
-  options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
+  options,
+}: FormatDateProps): string => {
+  const opts = {
+    timeZone:'Europe/Stockholm',
+    month: 'short',
     day: 'numeric',
     hour: 'numeric',
-    minute: 'numeric',
-    timeZone: 'Europe/Stockholm',
-  },
-}: FormatDateProps): string => {
+    minute:'numeric',
+    ...options,
+  }
   const d = parseDateTime(dateTime)
-  return Intl.DateTimeFormat(locale, options).format(d)
+  return Intl.DateTimeFormat(locale, opts).format(d)
 }
 
 export interface TimeToProps {
