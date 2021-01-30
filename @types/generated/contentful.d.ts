@@ -74,6 +74,9 @@ export interface IRaceFields {
   /** Date */
   date: string
 
+  /** Original Date */
+  originalDate?: string | undefined
+
   /** Duration */
   duration: number
 
