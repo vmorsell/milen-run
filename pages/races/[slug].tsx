@@ -80,6 +80,11 @@ export const Race = ({ race, layout }: RaceProps): JSX.Element => {
         <HStack my={6} alignItems="flex-start">
           <Box flex="1">
             <Text fontSize="sm">{layout.fields.whenHeading}</Text>
+            {race.fields.originalDate && (
+              <Text fontSize="l" fontWeight="bold" as="s">
+                {formatDate({ dateTime: race.fields.originalDate })}
+              </Text>
+            )}
             <Text fontSize="xl" fontWeight="bold">
               {formatDate({ dateTime: race.fields.date })}
             </Text>
